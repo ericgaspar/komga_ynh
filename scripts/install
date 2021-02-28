@@ -57,7 +57,7 @@ ynh_app_setting_set --app=$app --key=path --value=$path_url
 ynh_script_progression --message="Finding an available port..." --weight=1
 
 # Find an available port
-port=$(ynh_find_port --port=8443)
+port=$(ynh_find_port --port=8080)
 ynh_app_setting_set --app=$app --key=port --value=$port
 
 #=================================================
@@ -138,7 +138,7 @@ ynh_use_logrotate
 #=================================================
 ynh_script_progression --message="Integrating service in YunoHost..." --weight=2
 
-yunohost service add $app --description="Media server for your comics, manga and magazines" --log="systemd"
+yunohost service add $app --description="Media server for your comics, manga and magazines" --log="/var/log/$app/$app.log"
 
 #=================================================
 # START SYSTEMD SERVICE
